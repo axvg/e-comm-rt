@@ -8,12 +8,14 @@ import {
 } from "../../utils/firebase/firebase.utils";
 
 const SignIn = () => {
-  useEffect(async () => {
-    const response = await getRedirectResult(auth);
+  useEffect(() => {
+    async () => {
+      const response = await getRedirectResult(auth);
 
-    if (response) {
-      const userDocRef = await createUserDocumentFromAuth(user);
-    }
+      if (response) {
+        const userDocRef = await createUserDocumentFromAuth(response.user);
+      }
+    };
   }, []);
 
   const logGoogleUser = async () => {
